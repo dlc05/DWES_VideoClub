@@ -12,6 +12,7 @@ class Cliente{
         $this->nombre = $nombre;
         $this->numero = $numero;
         $this->maxAlquilerConcurrente = $maxAlquilerConcurrente;
+        $this->numSoportesAlquilados = 0;
     }
 
     public function getNumero(): int
@@ -32,6 +33,30 @@ class Cliente{
     public function muestraResumen() : void{
         echo "<br><strong>Nombre: </strong>$this->nombre";
         echo "<br>Cantidad de alquileres:". count($this->soportesAlquilados);
+    }
+
+    public function tieneAlquilado(Soporte $soporte) : bool{
+        foreach ($this->soportesAlquilados as $s){
+            if($s == $soporte){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function alquilar(Soporte $soporte): bool{
+        if($this->tieneAlquilado($soporte)){
+            echo "<br>El cliente ya tiene alquilado el soporte";
+            return false;
+        }
+        if($this->numSoportesAlquilados >= $this->maxAlquilerConcurrente){
+            echo "<br>El cliente ha alcanzado el numero maximo de alquileres concurrentes";
+            return false;
+        }
+        $this->numSoportesAlquilados++;
+        $this->soportesAlquilados[] = $soporte;
+        echo "<br>El cliente ha alquilado el soporte" .$soporte->titulo;
+        return true;
     }
 
 }

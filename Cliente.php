@@ -12,6 +12,7 @@ class Cliente{
         $this->nombre = $nombre;
         $this->numero = $numero;
         $this->maxAlquilerConcurrente = $maxAlquilerConcurrente;
+        $this->soportesAlquilados = array();
         $this->numSoportesAlquilados = 0;
     }
 
@@ -55,8 +56,41 @@ class Cliente{
         }
         $this->numSoportesAlquilados++;
         $this->soportesAlquilados[] = $soporte;
-        echo "<br>El cliente ha alquilado el soporte" .$soporte->titulo;
+        echo "<br>El cliente ha alquilado el soporte " .$soporte->titulo;
         return true;
+    }
+
+    public function devolver(int $numeroSoporte): bool{
+        $indice = -1;
+        $soporte = null;
+        foreach ($this->soportesAlquilados as $llave => $s){
+            if($s == null) continue;
+            if($s->getNumero() == $numeroSoporte){
+                $indice = $llave;
+                $soporte = $s;
+            }
+        }
+
+        if($soporte == null || !$this->tieneAlquilado($soporte)){
+            echo "<br>El cliente no tiene alquilado el soporte";
+            $this->numSoportesAlquilados++;
+            $this->soportesAlquilados[] = $soporte;
+            return false;
+        }
+        $this->numSoportesAlquilados--;
+        //Unset no elimina el indice, solo el contenido hay que utilizar otra funcion
+        unset($this->soportesAlquilados[$indice]);
+        echo "<br>El cliente ha devuelto el soporte " .$numeroSoporte;
+        return true;
+    }
+
+    public function listaAlquileres() : void{
+        echo "<br>El cliente tiene alquilados ". $this->numSoportesAlquilados. " soportes<br>";
+        foreach ($this->soportesAlquilados as $soporte){
+            if($soporte == null) continue;
+            $soporte->muestraResumen();
+            echo "<br><br>";
+        }
     }
 
 }

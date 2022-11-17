@@ -2,7 +2,7 @@
 class Dvd extends Soporte{
 
     public string $idiomas;
-    public string $formatoPantalla;
+    private string $formatoPantalla;
 
     public function __construct($titulo, $numero, $precio, $idiomas, $formatoPantalla)
     {

@@ -73,12 +73,9 @@ class Cliente{
 
         if($soporte == null || !$this->tieneAlquilado($soporte)){
             echo "<br>El cliente no tiene alquilado el soporte";
-            $this->numSoportesAlquilados++;
-            $this->soportesAlquilados[] = $soporte;
             return false;
         }
         $this->numSoportesAlquilados--;
-        //Unset no elimina el indice, solo el contenido hay que utilizar otra funcion
         unset($this->soportesAlquilados[$indice]);
         echo "<br>El cliente ha devuelto el soporte " .$numeroSoporte;
         return true;

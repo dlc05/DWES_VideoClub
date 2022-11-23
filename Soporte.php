@@ -1,5 +1,5 @@
 <?php
-class Soporte{
+abstract class Soporte{
 
     public string $titulo;
     protected int $numero;

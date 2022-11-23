@@ -1,5 +1,6 @@
 <?php
-abstract class Soporte{
+include_once "Resumible.php";
+abstract class Soporte implements Resumible {
 
     public string $titulo;
     protected int $numero;

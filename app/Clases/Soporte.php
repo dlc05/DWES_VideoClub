@@ -3,7 +3,6 @@
 namespace Clases;
 
 include_once "Resumible.php";
-use Clases\Resumible;
 
 abstract class Soporte implements Resumible
 {

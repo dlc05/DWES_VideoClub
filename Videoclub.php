@@ -63,11 +63,12 @@ class Videoclub{
         echo "<br>";
     }
 
-    public function alquilaSocioProducto($numeroCliente, $numeroSoporte){
+    public function alquilaSocioProducto($numeroCliente, $numeroSoporte) : Videoclub{
         $cliente = $this->socios[$numeroCliente];
         $soporte =  $this->productos[$numeroSoporte];
 
         $cliente->alquilar($soporte);
+        return $this;
     }
 }
 

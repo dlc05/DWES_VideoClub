@@ -3,11 +3,12 @@
     //Parte 320
     include "Soporte.php";
 
-    $soporte1 = new Soporte("Tenet", 22, 3);
+    //No se puede instanciar la clase soporte por que en el ejercicio 328 se transformo en abstracta
+    /*$soporte1 = new Soporte("Tenet", 22, 3);
     echo "<strong>" . $soporte1->titulo . "</strong>";
     echo "<br>Precio: " . $soporte1->getPrecio() . " euros";
     echo "<br>Precio IVA incluido: " . $soporte1->getPrecioConIVA() . " euros";
-    $soporte1->muestraResumen();
+    $soporte1->muestraResumen();*/
 
     echo "<br><br>------------------------<br><br>";
     //Parte 321

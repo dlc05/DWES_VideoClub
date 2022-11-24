@@ -45,19 +45,21 @@ class Cliente{
         return false;
     }
 
-    public function alquilar(Soporte $soporte): bool{
+    public function alquilar(Soporte $soporte): Cliente{
         if($this->tieneAlquilado($soporte)){
-            echo "<br>El cliente ya tiene alquilado el soporte";
-            return false;
+            //echo cambiado por throw en el ejercicio 330
+            //echo "<br>El cliente ya tiene alquilado el soporte";
+            throw new Exception("El cliente ya tiene alquilado el soporte");
         }
         if($this->numSoportesAlquilados >= $this->maxAlquilerConcurrente){
-            echo "<br>El cliente ha alcanzado el numero maximo de alquileres concurrentes";
-            return false;
+            //echo cambiado por throw en el ejercicio 330
+            //echo "<br>El cliente ha alcanzado el numero maximo de alquileres concurrentes";
+            throw new Exception("El cliente ha alcanzado el numero maximo de alquileres concurrentes");
         }
         $this->numSoportesAlquilados++;
         $this->soportesAlquilados[] = $soporte;
         echo "<br>El cliente ha alquilado el soporte " .$soporte->titulo;
-        return true;
+        return $this;
     }
 
     public function devolver(int $numeroSoporte): bool{

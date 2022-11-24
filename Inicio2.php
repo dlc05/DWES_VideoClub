@@ -1,9 +1,15 @@
 <?php
-include_once "Soporte.php";
-include_once "CintaVideo.php";
-include_once "Dvd.php";
-include_once "Juego.php";
-include_once "Cliente.php";
+
+include_once "Clases/CintaVideo.php";
+include_once "Clases/Cliente.php";
+include_once "Clases/Dvd.php";
+include_once "Clases/Juego.php";
+
+use Clases\CintaVideo;
+use Clases\Cliente;
+use Clases\Dvd;
+use Clases\Juego;
+
 
 //instanciamos un par de objetos cliente
 $cliente1 = new Cliente("Bruce Wayne", 23);

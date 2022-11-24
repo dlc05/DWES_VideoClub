@@ -1,6 +1,11 @@
 <?php
 
-class CintaVideo extends Soporte{
+namespace Clases;
+
+include_once "Soporte.php";
+
+class CintaVideo extends Soporte
+{
 
     private int $duracion;
 
@@ -16,10 +21,11 @@ class CintaVideo extends Soporte{
         return $this->duracion;
     }
 
-    public function muestraResumen() : void{
+    public function muestraResumen(): void
+    {
         echo "<br>Película en VHS: ";
         echo "<br><i>$this->titulo</i>";
-        echo "<br>".$this->getPrecio()."€ (IVA no incluido)";
-        echo "<br>Duracion: ".$this->getDuracion()." minutos";
+        echo "<br>" . $this->getPrecio() . "€ (IVA no incluido)";
+        echo "<br>Duracion: " . $this->getDuracion() . " minutos";
     }
 }

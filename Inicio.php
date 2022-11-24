@@ -1,7 +1,14 @@
 <?php
 
+include_once "Clases/CintaVideo.php";
+include_once "Clases/Dvd.php";
+include_once "Clases/Juego.php";
+
+use Clases\CintaVideo;
+use Clases\Dvd;
+use Clases\Juego;
+
     //Parte 320
-    include "Soporte.php";
 
     //No se puede instanciar la clase soporte por que en el ejercicio 328 se transformo en abstracta
     /*$soporte1 = new Soporte("Tenet", 22, 3);
@@ -12,7 +19,6 @@
 
     echo "<br><br>------------------------<br><br>";
     //Parte 321
-    include "CintaVideo.php";
 
     $miCinta = new CintaVideo("Los cazafantasmas", 23, 3.5, 107);
     echo "<strong>" . $miCinta->titulo . "</strong>";
@@ -22,7 +28,6 @@
 
     echo "<br><br>------------------------<br><br>";
     //Parte 322
-    include "Dvd.php";
 
     $miDvd = new Dvd("Origen", 24, 15, "es,en,fr", "16:9");
     echo "<strong>" . $miDvd->titulo . "</strong>";
@@ -32,7 +37,6 @@
 
     echo "<br><br>------------------------<br><br>";
     //Parte 323
-    include "Juego.php";
 
     $miJuego = new Juego("The Last of Us Part II", 26, 49.99, "PS4", 1, 1);
     echo "<strong>" . $miJuego->titulo . "</strong>";

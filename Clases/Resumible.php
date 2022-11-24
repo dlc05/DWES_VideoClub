@@ -1,6 +1,10 @@
 <?php
-interface Resumible{
 
-    public function muestraResumen() : void;
+namespace Clases;
+
+interface Resumible
+{
+
+    public function muestraResumen(): void;
 
 }

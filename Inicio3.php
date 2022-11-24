@@ -1,10 +1,13 @@
 <?php
-include_once "Soporte.php";
-include_once "CintaVideo.php";
-include_once "Dvd.php";
-include_once "Juego.php";
-include_once "Cliente.php";
-include_once "Videoclub.php"; // No incluimos nada más
+
+include_once "Clases/Videoclub.php";
+include_once "Clases/CintaVideo.php";
+include_once "Clases/Dvd.php";
+include_once "Clases/Juego.php";
+include_once "Clases/Cliente.php";
+
+use Clases\Videoclub;
+
 
 $vc = new Videoclub("Severo 8A");
 

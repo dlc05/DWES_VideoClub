@@ -1,5 +1,11 @@
 <?php
-class Juego extends Soporte{
+
+namespace Clases;
+
+include_once "Soporte.php";
+
+class Juego extends Soporte
+{
 
     public string $consola;
     private int $minNumJugadores;
@@ -13,24 +19,26 @@ class Juego extends Soporte{
         $this->maxNumJugadores = $maxNumJugadores;
     }
 
-    public function muestraJugadoresPosible() : string{
-        if($this->minNumJugadores == 1 && $this->maxNumJugadores == 1){
+    public function muestraJugadoresPosible(): string
+    {
+        if ($this->minNumJugadores == 1 && $this->maxNumJugadores == 1) {
             return "Para un jugador";
         }
-        if($this->minNumJugadores == 1){
-            return "Para ".$this->maxNumJugadores." jugadores";
+        if ($this->minNumJugadores == 1) {
+            return "Para " . $this->maxNumJugadores . " jugadores";
         }
-        if($this->minNumJugadores > 1){
-            return "De ".$this->minNumJugadores. " a " .$this->maxNumJugadores. " jugadores";
+        if ($this->minNumJugadores > 1) {
+            return "De " . $this->minNumJugadores . " a " . $this->maxNumJugadores . " jugadores";
         }
 
         return "Error en la muestra de jugadores";
     }
 
-    public function muestraResumen() : void{
-        echo "<br>Juego para: ".$this->consola;
+    public function muestraResumen(): void
+    {
+        echo "<br>Juego para: " . $this->consola;
         echo "<br><i>$this->titulo</i>";
-        echo "<br>".$this->getPrecio()."€ (IVA no incluido)";
-        echo "<br>".$this->muestraJugadoresPosible();
+        echo "<br>" . $this->getPrecio() . "€ (IVA no incluido)";
+        echo "<br>" . $this->muestraJugadoresPosible();
     }
 }

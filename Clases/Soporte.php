@@ -1,6 +1,12 @@
 <?php
+
+namespace Clases;
+
 include_once "Resumible.php";
-abstract class Soporte implements Resumible {
+use Clases\Resumible;
+
+abstract class Soporte implements Resumible
+{
 
     public string $titulo;
     protected int $numero;
@@ -21,7 +27,7 @@ abstract class Soporte implements Resumible {
 
     public function getPrecioConIVA(): float
     {
-        return $this->precio*Soporte::IVA;
+        return $this->precio * Soporte::IVA;
     }
 
     public function getNumero(): int
@@ -29,7 +35,8 @@ abstract class Soporte implements Resumible {
         return $this->numero;
     }
 
-    public function muestraResumen() : void{
+    public function muestraResumen(): void
+    {
         echo "<br><i>$this->titulo</i>";
         echo "<br>$this->precio € (IVA no incluido)";
     }

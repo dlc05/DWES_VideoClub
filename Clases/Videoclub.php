@@ -1,4 +1,7 @@
 <?php
+
+use Clases\CintaVideo;
+
 class Videoclub{
 
     private string $nombre;

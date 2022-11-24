@@ -1,8 +1,6 @@
 <?php
 
-include_once "Clases/CintaVideo.php";
-include_once "Clases/Dvd.php";
-include_once "Clases/Juego.php";
+include "autoload.php";
 
 use Clases\CintaVideo;
 use Clases\Dvd;

@@ -1,14 +1,15 @@
 <?php
 
-include_once "Clases/CintaVideo.php";
-include_once "Clases/Cliente.php";
-include_once "Clases/Dvd.php";
-include_once "Clases/Juego.php";
+include "../autoload.php";
 
 use Clases\CintaVideo;
 use Clases\Cliente;
 use Clases\Dvd;
 use Clases\Juego;
+use Clases\Util\SoporteNoEncontradoException;
+use Clases\Util\CupoSuperadoException;
+use Clases\Util\SoporteYaAlquiladoException as SoporteYaAlquiladoException;
+
 
 
 //instanciamos un par de objetos cliente

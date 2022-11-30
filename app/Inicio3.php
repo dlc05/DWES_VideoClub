@@ -1,10 +1,6 @@
 <?php
 
-include_once "Clases/Videoclub.php";
-include_once "Clases/CintaVideo.php";
-include_once "Clases/Dvd.php";
-include_once "Clases/Juego.php";
-include_once "Clases/Cliente.php";
+include "../autoload.php";
 
 use Clases\Videoclub;
 

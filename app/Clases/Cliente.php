@@ -2,7 +2,6 @@
 
 namespace Clases;
 
-use Exception;
 
 class Cliente
 {
@@ -58,12 +57,12 @@ class Cliente
         if ($this->tieneAlquilado($soporte)) {
             //echo cambiado por throw en el ejercicio 330
             //echo "<br>El cliente ya tiene alquilado el soporte";
-            throw new Exception("El cliente ya tiene alquilado el soporte");
+            throw new SoporteYaAlquiladoException("El cliente ya tiene alquilado el soporte");
         }
         if ($this->numSoportesAlquilados >= $this->maxAlquilerConcurrente) {
             //echo cambiado por throw en el ejercicio 330
             //echo "<br>El cliente ha alcanzado el numero maximo de alquileres concurrentes";
-            throw new Exception("El cliente ha alcanzado el numero maximo de alquileres concurrentes");
+            throw new CupoSuperadoException("El cliente ha alcanzado el numero maximo de alquileres concurrentes");
         }
         $this->numSoportesAlquilados++;
         $this->soportesAlquilados[] = $soporte;
@@ -71,7 +70,7 @@ class Cliente
         return $this;
     }
 
-    public function devolver(int $numeroSoporte): bool
+    public function devolver(int $numeroSoporte): Cliente
     {
         $indice = -1;
         $soporte = null;
@@ -84,13 +83,12 @@ class Cliente
         }
 
         if ($soporte == null || !$this->tieneAlquilado($soporte)) {
-            echo "<br>El cliente no tiene alquilado el soporte";
-            return false;
+            throw new SoporteNoEncontradoException("El cliente no tiene alquilado el soporte");
         }
         $this->numSoportesAlquilados--;
         unset($this->soportesAlquilados[$indice]);
         echo "<br>El cliente ha devuelto el soporte " . $numeroSoporte;
-        return true;
+        return $this;
     }
 
     public function listaAlquileres(): void

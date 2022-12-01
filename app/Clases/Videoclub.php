@@ -125,5 +125,28 @@ class Videoclub
             echo "El array contiene un producto que ya esta alquilado";
         }
     }
+
+    public function devolverSocioProducto($numSocio, $numeroProducto) :Videoclub{
+        $cliente = $this->socios[$numSocio];
+        $soporte = $this->productos[$numeroProducto];
+
+        try{
+            $cliente->devolver($soporte->getNumero());
+        }catch (SoporteNoEncontradoException $e){
+            echo "<br>".$e."<br>";
+        }
+
+        return $this;
+    }
+
+    public function devolverSocioProductos($numSocio, $arrayProductos): Videoclub{
+        foreach ($arrayProductos as $soporte){
+            if($soporte instanceof Soporte){
+                $this->devolverSocioProducto($numSocio, $soporte->getNumero());
+            }
+        }
+
+        return $this;
+    }
 }
 

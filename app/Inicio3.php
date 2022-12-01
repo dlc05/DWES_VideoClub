@@ -36,5 +36,13 @@ $vc->alquilaSocioProducto(1,2);
 //no se puede porque el socio 1 tiene 2 alquileres como máximo
 $vc->alquilaSocioProducto(1,6);
 
+//Borra the last of us part II
+//$vc->devolverSocioProducto(1, 1);
+
+//Borra the last of us part II y torrente
+$vc->devolverSocioProductos(1, $arraySoportes);
+
 //listo los socios
+//Los socios tienen 0 soportes cada uno por que la funcion anterior "devolversocioproductos"
+//ha devuelto todos los productos alquilados
 $vc->listarSocios();

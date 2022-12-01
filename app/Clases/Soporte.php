@@ -10,6 +10,7 @@ abstract class Soporte implements Resumible
     public string $titulo;
     protected int $numero;
     private float $precio;
+    public bool $alquilado;
     const IVA = 1.21;
 
     public function __construct($titulo, $numero, $precio)
@@ -17,6 +18,7 @@ abstract class Soporte implements Resumible
         $this->titulo = $titulo;
         $this->numero = $numero;
         $this->precio = $precio;
+        $this->alquilado = false;
     }
 
     public function getPrecio(): float

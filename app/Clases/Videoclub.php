@@ -34,6 +34,11 @@ class Videoclub
         return $this->numTotalAlquileres;
     }
 
+    public function getProductos(): array
+    {
+        return $this->productos;
+    }
+
     private function incluirProducto(Soporte $producto)
     {
         $this->productos[] = $producto;
@@ -96,10 +101,29 @@ class Videoclub
         try{
             $cliente->alquilar($soporte);
         }catch (SoporteYaAlquiladoException | CupoSuperadoException $e){
-            echo $e;
+            echo "<br>".$e."<br>";
         }
 
         return $this;
+    }
+
+    public function alquilarSocioProducto($numeroCliente, $arraySoportes): void{
+        $yaAlquilado = false;
+        foreach ($arraySoportes as $soporte){
+            if($soporte instanceof Soporte){
+                if($soporte->alquilado){
+                    $yaAlquilado = true;
+                }
+            }
+        }
+
+        if(!$yaAlquilado){
+            foreach ($arraySoportes as $soporte){
+                $this->alquilaSocioProducto($numeroCliente, $soporte->getNumero());
+            }
+        }else{
+            echo "El array contiene un producto que ya esta alquilado";
+        }
     }
 }
 

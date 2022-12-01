@@ -78,8 +78,13 @@ class Videoclub
     {
         $cliente = $this->socios[$numeroCliente];
         $soporte = $this->productos[$numeroSoporte];
-        
-        $cliente->alquilar($soporte);
+
+        try{
+            $cliente->alquilar($soporte);
+        }catch (SoporteYaAlquiladoException | CupoSuperadoException $e){
+            echo $e;
+        }
+
         return $this;
     }
 }

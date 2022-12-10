@@ -44,8 +44,8 @@ function insertVideoclubData(){
     $vc->incluirCintaVideo("Los cazafantasmas", 3.5, 107);
     $vc->incluirCintaVideo("El nombre de la Rosa", 1.5, 140);
 
-    $vc->incluirSocio("Amancio Ortega");
-    $vc->incluirSocio("Pablo Picasso", 2);
+    $vc->incluirSocio("Amancio Ortega", "amancio");
+    $vc->incluirSocio("Pablo Picasso", "pablo", 2);
 
     $arraySoportes = array();
     $arraySoportes[] = $vc->getProductos()[1];

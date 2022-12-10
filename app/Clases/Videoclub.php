@@ -64,9 +64,9 @@ class Videoclub
         $this->incluirProducto($juego);
     }
 
-    public function incluirSocio($nombre, $maxAlquileresConcurrentes = 3)
+    public function incluirSocio($nombre, $password, $maxAlquileresConcurrentes = 3)
     {
-        $socio = new Cliente($nombre, $this->numSocios, $maxAlquileresConcurrentes);
+        $socio = new Cliente($nombre, $password, $this->numSocios, $maxAlquileresConcurrentes);
         $this->socios[] = $socio;
         echo "Incluido socio " . $this->numSocios . "<br>";
         $this->numSocios++;

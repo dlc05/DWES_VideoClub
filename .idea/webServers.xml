@@ -2,8 +2,8 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="ef4fe4f9-aa74-4f2f-b6d8-5f07f8224d98" name="localhost" url="http://localhost/dleocasTarde/VideoClub">
-        <fileTransfer mountedRoot="C:\xampp\htdocs\dleocasTarde\VideoClub" accessType="MOUNT" port="0" />
+      <webServer id="ef4fe4f9-aa74-4f2f-b6d8-5f07f8224d98" name="localhost" url="http://localhost/videoclub">
+        <fileTransfer mountedRoot="D:\xampp\htdocs\videoclub" accessType="MOUNT" port="0" />
       </webServer>
     </option>
   </component>

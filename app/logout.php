@@ -6,4 +6,9 @@
         unset($_COOKIE['password']);
     }
 
+    session_start();
+    if(isset($_SESSION['videoclub'])){
+        session_destroy();
+    }
+
     header('Location:index.php');

@@ -31,13 +31,45 @@
 </head>
 <body>
 <form action="logout.php" method="post">
-    <div class="container">
+    <div class="container" style="width: 700px !important;">
         <h1>Hola <?=$usuario?></h1>
+        <h2>Tabla de socios</h2>
         <?php
-            $videoclub->listarSocios();
-            $videoclub->listarProductos();
+            echo "<table class='table'>";
+            echo "<tr>";
+            echo "<th>Número Socio</th>";
+            echo "<th>Nombre/Usuario</th>";
+            echo "<th>Acciones</th>";
+            echo "</tr>";
+            foreach($videoclub->getSocios() as $socio){
+                echo "<tr>";
+                echo "<td>". $socio->getNumero() ."</td>";
+                echo "<td>". $socio->nombre ."</td>";
+                echo "</tr>";
+            }
+            echo "</table>";
         ?>
-        <button type="submit" name="salir">Salir</button>
+        <h2>Tabla de soportes</h2>
+        <?php
+            echo "<table class='table'>";
+            echo "<tr>";
+            echo "<th>Número soporte</th>";
+            echo "<th>Titulo soporte</th>";
+            echo "<th>Precio</th>";
+            echo "</tr>";
+            foreach($videoclub->getProductos() as $soporte){
+                echo "<tr>";
+                echo "<td>". $soporte->getNumero() ."</td>";
+                echo "<td>". $soporte->titulo ."</td>";
+                echo "<td>". $soporte->getPrecio() ."</td>";
+                echo "</tr>";
+            }
+            echo "</table>";
+        ?>
+        <div style="display: flex">
+            <button type="button" onclick="location.href='formCreateCliente.php'">Crear cliente</button>
+            <button type="submit" name="salir">Salir</button>
+        </div>
     </div>
 </form>
 </body>

@@ -1,7 +1,6 @@
 <?php
 
     include "../autoload.php";
-    use Clases\Videoclub;
 
     if(isset($_COOKIE['usuario'])){
         $usuario = $_COOKIE['usuario'];
@@ -11,8 +10,8 @@
     }
 
     session_start();
-    if(isset($_SESSION['videoclub'])){
-        $videoclub = unserialize($_SESSION['videoclub']);
+    if(isset($_SESSION['cliente'])){
+        $cliente = unserialize($_SESSION['cliente']);
     }else{
         header('Location:main.php');
         return;
@@ -27,18 +26,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="./css/styles.css"/>
-    <title>mainAdmin - Videoclub</title>
+    <title>mainCliente - Videoclub</title>
 </head>
 <body>
 <form action="logout.php" method="post">
     <div class="container">
         <h1>Hola <?=$usuario?></h1>
         <?php
-            $videoclub->listarSocios();
-            $videoclub->listarProductos();
+        foreach ($cliente->getAlquileres() as $soporte){
+            $soporte->muestraResumen();
+        }
         ?>
         <button type="submit" name="salir">Salir</button>
     </div>
 </form>
 </body>
 </html>
+

@@ -34,6 +34,11 @@ class Videoclub
         return $this->numTotalAlquileres;
     }
 
+    public function getSocios(): array
+    {
+        return $this->socios;
+    }
+
     public function getProductos(): array
     {
         return $this->productos;
@@ -42,7 +47,6 @@ class Videoclub
     private function incluirProducto(Soporte $producto)
     {
         $this->productos[] = $producto;
-        echo "Incluido soporte " . $this->numProductos . "<br>";
         $this->numProductos++;
     }
 
@@ -68,7 +72,6 @@ class Videoclub
     {
         $socio = new Cliente($nombre, $password, $this->numSocios, $maxAlquileresConcurrentes);
         $this->socios[] = $socio;
-        echo "Incluido socio " . $this->numSocios . "<br>";
         $this->numSocios++;
     }
 

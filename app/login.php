@@ -5,8 +5,11 @@ use Clases\Videoclub;
 
 $usuario = $_POST['usuario'];
 $password = $_POST['password'];
+$videoclub = insertVideoclubData();
+$cliente = null;
 
 $usuarioCorrecto = false;
+$esCliente = false;
 $esAdmin = false;
 
 if($usuario == "admin" && $password == "admin") {
@@ -15,13 +18,27 @@ if($usuario == "admin" && $password == "admin") {
 }
 if($usuario == "usuario" && $password == "usuario") $usuarioCorrecto = true;
 
+foreach ($videoclub->getSocios() as $socio){
+    if($usuario == $socio->nombre){
+        if($password == $socio->password){
+            $cliente = $socio;
+            $usuarioCorrecto = true;
+            $esCliente = true;
+        }
+    }
+}
+
 if($usuarioCorrecto){
     setcookie("usuario", $usuario, time()+60*60*24*90);
     setcookie("password", $password, time()+60*60*24*90);
     if($esAdmin){
         session_start();
-        $_SESSION['videoclub'] = serialize(insertVideoclubData());
+        $_SESSION['videoclub'] = serialize($videoclub);
         header('Location:mainAdmin.php');
+    }else if($esCliente){
+        session_start();
+        $_SESSION['cliente'] = serialize($cliente);
+        header('Location:mainCliente.php');
     }else{
         header('Location:main.php');
     }

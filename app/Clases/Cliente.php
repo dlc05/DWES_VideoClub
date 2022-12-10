@@ -33,6 +33,10 @@ class Cliente
         return $this->numSoportesAlquilados;
     }
 
+    public function getAlquileres(): array{
+        return  $this->soportesAlquilados;
+    }
+
     public function setNumero(int $numero): void
     {
         $this->numero = $numero;
@@ -69,7 +73,6 @@ class Cliente
         $this->numSoportesAlquilados++;
         $this->soportesAlquilados[] = $soporte;
         $soporte->alquilado = true;
-        echo "<br>El cliente ha alquilado el soporte " . $soporte->titulo;
         return $this;
     }
 
@@ -91,7 +94,6 @@ class Cliente
         $this->numSoportesAlquilados--;
         unset($this->soportesAlquilados[$indice]);
         $soporte->alquilado = false;
-        echo "<br>El cliente ha devuelto el soporte " . $numeroSoporte;
         return $this;
     }
 

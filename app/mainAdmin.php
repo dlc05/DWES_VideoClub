@@ -49,7 +49,7 @@
                 echo "<td>". $socio->nombre ."</td>";
                 echo "<td>
                     <form action='formUpdateCliente.php' method='get'><button type='submit' name='id' value=".$socio->getNumero().">Modificar</button></form>
-                    <a href='removeCliente.php'>Eliminar</a>
+                    <form name='deleteForm' action='removeCliente.php' method='get'><button type='submit' name='id' value=".$socio->getNumero().">Eliminar</button></form>
                     </td>";
                 echo "</tr>";
             }
@@ -79,5 +79,6 @@
             </div>
         </form>
     </div>
+    <script src="js/index.js"></script>
 </body>
 </html>

@@ -12,6 +12,7 @@
     session_start();
     if(isset($_SESSION['cliente'])){
         $cliente = unserialize($_SESSION['cliente']);
+        $usuario = $cliente->nombre;
     }else{
         header('Location:main.php');
         return;
@@ -29,7 +30,7 @@
     <title>mainCliente - Videoclub</title>
 </head>
 <body>
-<form action="logout.php" method="post">
+
     <div class="container">
         <h1>Hola <?=$usuario?></h1>
         <?php
@@ -37,9 +38,14 @@
             $soporte->muestraResumen();
         }
         ?>
-        <button type="submit" name="salir">Salir</button>
+        <form action="logout.php" method="post">
+            <div style="display: flex">
+                <button type="button" onclick="location.href='formUpdateCliente.php'">Modificar</button>
+                <button type="submit" name="salir">Salir</button>
+            </div>
+        </form>
     </div>
-</form>
+
 </body>
 </html>
 

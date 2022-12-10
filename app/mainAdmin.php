@@ -13,6 +13,9 @@
     session_start();
     if(isset($_SESSION['videoclub'])){
         $videoclub = unserialize($_SESSION['videoclub']);
+    }else if(isset($_SESSION['cliente'])){
+        header('Location:mainCliente.php');
+        return;
     }else{
         header('Location:main.php');
         return;
@@ -30,7 +33,6 @@
     <title>mainAdmin - Videoclub</title>
 </head>
 <body>
-<form action="logout.php" method="post">
     <div class="container" style="width: 700px !important;">
         <h1>Hola <?=$usuario?></h1>
         <h2>Tabla de socios</h2>
@@ -45,6 +47,10 @@
                 echo "<tr>";
                 echo "<td>". $socio->getNumero() ."</td>";
                 echo "<td>". $socio->nombre ."</td>";
+                echo "<td>
+                    <form action='formUpdateCliente.php' method='get'><button type='submit' name='id' value=".$socio->getNumero().">Modificar</button></form>
+                    <a href='removeCliente.php'>Eliminar</a>
+                    </td>";
                 echo "</tr>";
             }
             echo "</table>";
@@ -66,11 +72,12 @@
             }
             echo "</table>";
         ?>
-        <div style="display: flex">
-            <button type="button" onclick="location.href='formCreateCliente.php'">Crear cliente</button>
-            <button type="submit" name="salir">Salir</button>
-        </div>
+        <form action="logout.php" method="post">
+            <div style="display: flex">
+                <button type="button" onclick="location.href='formCreateCliente.php'">Crear cliente</button>
+                <button type="submit" name="salir">Salir</button>
+            </div>
+        </form>
     </div>
-</form>
 </body>
 </html>

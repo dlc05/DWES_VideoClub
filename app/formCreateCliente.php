@@ -1,3 +1,16 @@
+<?php
+    if(isset($_COOKIE['usuario'])){
+        $usuario = $_COOKIE['usuario'];
+    }else{
+        header('Location:index.php');
+        return;
+    }
+    session_start();
+    if(!isset($_SESSION['videoclub'])){
+        header('Location:mainAdmin.php');
+        return;
+    }
+?>
 
 <!DOCTYPE html>
 <html lang="en">

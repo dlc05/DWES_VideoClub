@@ -83,7 +83,7 @@ select::-webkit-scrollbar-thumb {
     background: #000000aa;
 }
 
-input[type=text], input[type=password]{
+input[type=text], input[type=password], input[type=number]{
     width: 100%;
     margin-bottom: 20px;
     font-size: medium;

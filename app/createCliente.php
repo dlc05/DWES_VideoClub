@@ -21,7 +21,7 @@
     }
 
     foreach($videoclub->getSocios() as $socio){
-        if($socio == $usuario){
+        if($socio->nombre == $usuario){
             $mensajeError = "Ese usuario ya esta registrado!";
             include('formCreateCliente.php');
             return;

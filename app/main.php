@@ -5,6 +5,14 @@
         header('Location:index.php');
         return;
     }
+
+    session_start();
+    if(isset($_SESSION['videoclub'])){
+        $videoclub = unserialize($_SESSION['videoclub']);
+    }else if(isset($_SESSION['cliente'])){
+        header('Location:mainCliente.php');
+        return;
+    }
 ?>
 
 <!DOCTYPE html>

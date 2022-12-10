@@ -41,8 +41,4 @@ if(isset($_SESSION['videoclub'])){
 }
 
 
-
-
-
-
 header('Location:mainAdmin.php');

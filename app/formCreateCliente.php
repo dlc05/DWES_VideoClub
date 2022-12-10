@@ -36,7 +36,7 @@
         }
         ?>
         <div style="display: flex">
-            <button type="submit" name="crearCliente">Registrar cliente</button>
+            <button type="submit" name="crearCliente">Registrar</button>
             <button type="button" onclick="location.href='mainAdmin.php'">Volver</button>
         </div>
     </div>

@@ -11,13 +11,16 @@
         if(isset($_SESSION['videoclub'])){
             $videoclub = unserialize($_SESSION['videoclub']);
             $socios = $videoclub->getSocios();
-            foreach($socios as $socio){
+            $ind = -1;
+            foreach($socios as $indice=>$socio){
                 if($socio->getNumero() == $id){
                     $eliminarCliente = $socio;
+                    $ind = $indice;
+                    break;
                 }
             }
             if(isset($eliminarCliente)){
-                unset($socios[$id]);
+                unset($socios[$ind]);
                 $videoclub->setSocios($socios);
                 $_SESSION['videoclub'] = serialize($videoclub);
             }

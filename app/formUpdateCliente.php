@@ -43,7 +43,7 @@
 <form action="updateCliente.php" method="post">
     <div class="container">
         <h1>Modificar cliente</h1>
-        <input type="number" name="id" disabled <?php echo isset($id) ? 'value="'. $id.'"' : ""; ?>>
+        <input type="number" name="id" <?php echo isset($id) ? 'value="'. $id.'"' : ""; ?> readonly>
         <input type="text" name="usuario" placeholder="Introduce el nombre" value="<?php echo $usuario?>">
         <input type="password" name="password" placeholder="Introduce la contraseña" value="<?php echo $password?>">
 

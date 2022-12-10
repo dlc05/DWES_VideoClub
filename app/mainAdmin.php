@@ -48,8 +48,10 @@
                 echo "<td>". $socio->getNumero() ."</td>";
                 echo "<td>". $socio->nombre ."</td>";
                 echo "<td>
-                    <form action='formUpdateCliente.php' method='get'><button type='submit' name='id' value=".$socio->getNumero().">Modificar</button></form>
-                    <form name='deleteForm' action='removeCliente.php' method='get'><button type='submit' name='id' value=".$socio->getNumero().">Eliminar</button></form>
+                    <div style='display: flex; justify-content: center;'>
+                    <form action='formUpdateCliente.php' method='get'><button type='submit' name='id' value=".$socio->getNumero()." style='width: auto !important; margin: 0px 10px !important;'>Modificar</button></form>
+                    <form name='deleteForm' action='removeCliente.php' method='get'><button type='submit' name='id' value=".$socio->getNumero()." style='width: auto !important; margin: 0px 10px !important;'>Eliminar</button></form>
+                    </div>
                     </td>";
                 echo "</tr>";
             }

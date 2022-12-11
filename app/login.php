@@ -12,11 +12,16 @@ $usuarioCorrecto = false;
 $esCliente = false;
 $esAdmin = false;
 
+if(empty($usuario) || empty($password)){
+    $mensajeError = "Debes introducir un usuario y contraseña";
+    include('index.php');
+    return;
+}
+
 if($usuario == "admin" && $password == "admin") {
     $usuarioCorrecto = true;
     $esAdmin = true;
 }
-if($usuario == "usuario" && $password == "usuario") $usuarioCorrecto = true;
 
 foreach ($videoclub->getSocios() as $socio){
     if($usuario == $socio->nombre){
@@ -28,27 +33,41 @@ foreach ($videoclub->getSocios() as $socio){
     }
 }
 
-if($usuarioCorrecto){
-    setcookie("usuario", $usuario, time()+60*60*24*90);
-    setcookie("password", $password, time()+60*60*24*90);
-    if($esAdmin){
-        session_start();
-        $_SESSION['videoclub'] = serialize($videoclub);
-        header('Location:mainAdmin.php');
-    }else if($esCliente){
-        session_start();
-        $_SESSION['cliente'] = serialize($cliente);
-        header('Location:mainCliente.php');
-    }else{
-        header('Location:main.php');
-    }
+$direccionArchivo = "./credenciales/credenciales.txt";
+$archivo = fopen($direccionArchivo, "r");
 
+$mensajeError = "Usuario no registrado";
+while (!feof($archivo)){
+    $linea = explode(",", fgets($archivo));
+
+    if(strcmp($usuario, trim($linea[0])) == 0){
+        if(strcmp($password, trim($linea[1])) == 0){
+            $usuarioCorrecto = true;
+        }else{
+            $mensajeError = "Contraseña incorrecta";
+        }
+        break;
+    }
+}
+
+if(!$usuarioCorrecto){
+    include('index.php');
     return;
 }
 
-$mensajeError = "Usuario o contraseña incorrectos";
-
-include ('index.php');
+setcookie("usuario", $usuario, time()+60*60*24*90);
+setcookie("password", $password, time()+60*60*24*90);
+if($esAdmin){
+    session_start();
+    $_SESSION['videoclub'] = serialize($videoclub);
+    header('Location:mainAdmin.php');
+}else if($esCliente){
+    session_start();
+    $_SESSION['cliente'] = serialize($cliente);
+    header('Location:mainCliente.php');
+}else{
+    header('Location:main.php');
+}
 
 function insertVideoclubData(){
     $vc = new Videoclub("Severo 8A");
